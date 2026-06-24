@@ -39,3 +39,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# project source material (not part of the deployed app)
+*.md
+*.docx
+/design-reference/

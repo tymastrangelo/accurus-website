@@ -1,26 +1,1272 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
+/* ----------------------------------------------------------------------------
+   Brand tokens - sampled from Doug Cox's Accurus Research logo.
+   Registered with @theme so Tailwind utilities (text-navy, bg-paper, …) resolve
+   to these exact values. Raw Tailwind default palettes are intentionally unused.
+---------------------------------------------------------------------------- */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-navy: #1b2a4a;
+  --color-navy-deep: #15223c;
+  --color-blue: #4a7bc4;
+  --color-blue-ink: #3a6bb0;
+  --color-gold: #f2a01e;
+  --color-orange: #ed7a14;
+  --color-ember: #e0531f;
+  --color-paper: #fbfaf7;
+  --color-paper-warm: #f6f1e9;
+  --color-surface: #ffffff;
+  --color-line: #ece6dc;
+  --color-body: #48536a;
+  --color-muted: #666e80;
+
+  --font-display: var(--font-fraunces);
+  --font-sans: var(--font-hanken);
+
+  --radius-card: 18px;
+  --radius-frame: 26px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+:root {
+  --navy: #1b2a4a;
+  --navy-deep: #15223c;
+  --blue: #4a7bc4;
+  --blue-ink: #3a6bb0;
+  --gold: #f2a01e;
+  --orange: #ed7a14;
+  --ember: #e0531f;
+  /* deepened ember for small TEXT so it meets AA on light (4.5:1);
+     the brighter --ember stays for gradients, accents, and large display. */
+  --ember-text: #c8481a;
+  --paper: #fbfaf7;
+  --paper-warm: #f6f1e9;
+  --surface: #ffffff;
+  --line: #ece6dc;
+  --line-soft: #f1ece3;
+  --ink: #1b2a4a;
+  --body: #48536a;
+  --muted: #666e80;
+  --radius: 18px;
+  --radius-lg: 26px;
+  --shadow: 0 1px 2px rgba(27, 42, 74, 0.04), 0 14px 40px -18px rgba(27, 42, 74, 0.18);
+  --shadow-soft: 0 1px 2px rgba(27, 42, 74, 0.04), 0 8px 24px -16px rgba(27, 42, 74, 0.16);
+  --maxw: 1160px;
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+/* ------------------------------- base --------------------------------- */
+* {
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--body);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-size: clamp(1rem, 0.96rem + 0.25vw, 1.075rem);
+  line-height: 1.62;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display), Georgia, serif;
+  color: var(--ink);
+  font-optical-sizing: auto;
+  margin: 0;
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  overflow-wrap: break-word;
+}
+p {
+  margin: 0;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* visible focus on every interactive element */
+:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* skip link */
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -100px;
+  z-index: 100;
+  background: var(--navy);
+  color: #fff;
+  font-weight: 700;
+  padding: 0.7rem 1.1rem;
+  border-radius: 0 0 12px 12px;
+  transition: top 0.2s var(--ease);
+}
+.skip-link:focus {
+  top: 0;
+}
+
+.wrap {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+/* prevent any wide child from blowing out a grid track (horizontal overflow) */
+.hero .wrap > *,
+.intro .grid > *,
+.reassure .grid > *,
+.about-teaser .grid > *,
+.contact-grid > *,
+.feature > * {
+  min-width: 0;
+}
+.eyebrow {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--blue-ink);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  max-width: 100%;
+}
+.eyebrow::before {
+  content: "";
+  width: 26px;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--ember), var(--gold));
+}
+.lead {
+  font-size: clamp(1.12rem, 1.04rem + 0.5vw, 1.32rem);
+  line-height: 1.55;
+  color: #41506b;
+}
+
+/* ------------------------------ buttons ------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 0.92rem 1.5rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease), background 0.25s,
+    border-color 0.25s;
+}
+.btn-primary {
+  color: #fff;
+  background: linear-gradient(135deg, var(--orange), var(--ember));
+  box-shadow: 0 10px 22px -10px rgba(224, 83, 31, 0.6);
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 30px -12px rgba(224, 83, 31, 0.65);
+}
+.btn-ghost {
+  color: var(--navy);
+  background: transparent;
+  border-color: #d9d2c6;
+}
+.btn-ghost:hover {
+  border-color: var(--navy);
+  transform: translateY(-2px);
+}
+.btn-light {
+  color: var(--navy);
+  background: #fff;
+}
+.btn-light:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 30px -14px rgba(0, 0, 0, 0.4);
+}
+/* outline button for dark bands */
+.btn-outline {
+  color: #fff;
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.4);
+}
+.btn-outline:hover {
+  border-color: #fff;
+  transform: translateY(-2px);
+}
+.btn .arr {
+  transition: transform 0.25s var(--ease);
+}
+.btn:hover .arr {
+  transform: translateX(3px);
+}
+
+/* ------------------------------- logo --------------------------------- */
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.62rem;
+  line-height: 1;
+}
+.logo .wordmark {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.12em;
+}
+.logo .word-main {
+  font-family: var(--font-display), serif;
+  font-weight: 600;
+  font-size: 1.18rem;
+  letter-spacing: 0.12em;
+  /* drop the trailing letter-spacing so the glyph run centers true */
+  margin-right: -0.12em;
+  color: var(--navy);
+}
+.logo .word-sub {
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
+  font-family: var(--font-display), serif;
+  font-weight: 600;
+  font-size: 0.66rem;
+  color: var(--ember-text);
+}
+.logo .word-sub-t {
+  letter-spacing: 0.34em;
+  /* cancel trailing letter-spacing so the flanking rules sit symmetric */
+  margin-right: -0.34em;
+}
+.logo .word-sub::before,
+.logo .word-sub::after {
+  content: "";
+  height: 1.5px;
+  width: 0.9em;
+  background: var(--ember-text);
+  flex: 0 0 auto;
+}
+/* stacked variant - footer */
+.logo.stacked {
+  flex-direction: column;
+  gap: 0.55rem;
+  text-align: center;
+}
+.logo.stacked .word-main {
+  font-size: 1.5rem;
+}
+.logo.stacked .word-sub {
+  font-size: 0.78rem;
+}
+.logo .tagline {
+  font-family: var(--font-display), serif;
+  font-style: italic;
+  font-size: 0.82rem;
+  color: var(--navy);
+  margin-top: 0.45rem;
+  letter-spacing: 0;
+  text-indent: 0;
+}
+
+/* ------------------------------ header -------------------------------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(251, 250, 247, 0.82);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s, box-shadow 0.3s, background 0.3s;
+}
+.site-header.scrolled {
+  border-color: var(--line);
+  box-shadow: 0 6px 24px -20px rgba(27, 42, 74, 0.5);
+}
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 74px;
+}
+.brand {
+  display: inline-flex;
+  align-items: center;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2.1rem;
+}
+.nav-links a.link {
+  position: relative;
+  font-weight: 600;
+  color: var(--navy);
+  font-size: 0.98rem;
+  padding: 0.2rem 0;
+}
+.nav-links a.link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  height: 2px;
+  width: 100%;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--ember), var(--gold));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s var(--ease);
+}
+.nav-links a.link:hover::after,
+.nav-links a.link:focus-visible::after,
+.nav-links a.link[aria-current="page"]::after {
+  transform: scaleX(1);
+}
+.nav-cta {
+  margin-left: 0.4rem;
+}
+.menu-btn {
+  display: none;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  padding: 0.4rem;
+  color: var(--navy);
+}
+.menu-btn svg {
+  display: block;
+}
+
+/* --------------------------- mobile panel ----------------------------- */
+.scrim {
+  position: fixed;
+  inset: 0;
+  background: rgba(21, 34, 60, 0.4);
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.3s;
+  z-index: 60;
+}
+.scrim.open {
+  opacity: 1;
+  visibility: visible;
+}
+.panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: min(82vw, 340px);
+  background: var(--surface);
+  z-index: 70;
+  /* stay within the viewport when closed (a subtle slide+fade) so the panel
+     never creates horizontal overflow the way an off-canvas transform would. */
+  transform: translateX(14px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  /* opening flips to visible instantly (so it's focusable right away); closing
+     delays visibility until the fade finishes. */
+  transition: transform 0.32s var(--ease), opacity 0.32s var(--ease), visibility 0s linear 0.32s;
+  padding: 1.4rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  box-shadow: -20px 0 50px -30px rgba(27, 42, 74, 0.5);
+  overflow-y: auto;
+}
+.panel.open {
+  transform: none;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transition: transform 0.32s var(--ease), opacity 0.32s var(--ease), visibility 0s;
+}
+.panel .ptop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.2rem;
+}
+.panel a.link {
+  font-family: var(--font-display), serif;
+  font-size: 1.35rem;
+  color: var(--navy);
+  padding: 0.7rem 0;
+  border-bottom: 1px solid var(--line-soft);
+}
+.panel a.link[aria-current="page"] {
+  color: var(--ember);
+}
+.panel .btn {
+  margin-top: 1.1rem;
+  justify-content: center;
+}
+
+/* ------------------------------ sections ------------------------------ */
+section {
+  padding: clamp(4rem, 8vw, 7rem) 0;
+}
+.sec-head {
+  max-width: 46rem;
+}
+.sec-head h2 {
+  font-size: clamp(1.95rem, 1.5rem + 1.8vw, 2.85rem);
+  margin-top: 0.9rem;
+}
+.sec-head p {
+  margin-top: 1rem;
+}
+.divider {
+  height: 1px;
+  background: var(--line);
+  border: 0;
+  margin: 0;
+}
+
+/* ------------------------------ hero ---------------------------------- */
+.hero {
+  position: relative;
+  overflow: hidden;
+  /* fill the viewport below the 74px sticky header and center the content
+     within it, so the hero sits between header-bottom and screen-bottom. */
+  padding: 0;
+  min-height: calc(100vh - 74px);
+  min-height: calc(100svh - 74px);
+  display: flex;
+  align-items: center;
+}
+.hero .wrap {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: center;
+  padding-top: clamp(1.5rem, 3vw, 2.5rem);
+  padding-bottom: clamp(1.5rem, 3vw, 2.5rem);
+}
+.hero h1 {
+  font-size: clamp(2.1rem, 1.5rem + 2.9vw, 4.5rem);
+  font-weight: 480;
+  letter-spacing: -0.022em;
+  margin: 1.1rem 0 0;
+  overflow-wrap: break-word;
+}
+.hero h1 .ln {
+  display: block;
+}
+.kw {
+  position: relative;
+  display: inline-block;
+  color: var(--navy);
+}
+.kw .arc-u {
+  position: absolute;
+  left: -2%;
+  right: -2%;
+  bottom: -0.34em;
+  width: 104%;
+  height: 0.42em;
+  overflow: visible;
+}
+.hero p.lead {
+  margin-top: 1.4rem;
+  max-width: 34rem;
+}
+.hero-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  margin-top: 2rem;
+}
+.hero-meta {
+  margin-top: 2.2rem;
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  color: var(--muted);
+  font-size: 0.92rem;
+  flex-wrap: wrap;
+}
+.hero-meta .dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--gold);
+}
+
+/* ----------------------------- portrait ------------------------------- */
+.portrait {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  margin-left: auto;
+}
+.portrait .bigarc {
+  position: absolute;
+  z-index: 0;
+  width: 128%;
+  left: -20%;
+  top: 8%;
+  opacity: 0.9;
+}
+.pcard {
+  position: relative;
+  z-index: 1;
+  aspect-ratio: 4 / 4.5;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: linear-gradient(165deg, var(--blue) 0%, var(--navy) 78%);
+  box-shadow: var(--shadow);
+  border: 6px solid #fff;
+  outline: 1px solid var(--line);
+}
+.pcard .figure {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+.pcard .figure svg {
+  width: 62%;
+  height: auto;
+  opacity: 0.92;
+  margin-bottom: -2px;
+}
+.pcard .grain {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(120% 80% at 50% 0%, rgba(255, 255, 255, 0.16), transparent 60%);
+}
+.pcard .tag {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--navy);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  padding: 0.4rem 0.7rem;
+  border-radius: 999px;
+  box-shadow: var(--shadow-soft);
+}
+.pcard .cap {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  padding: 1.1rem 1.2rem;
+  background: linear-gradient(0deg, rgba(21, 34, 60, 0.88), rgba(21, 34, 60, 0));
+  color: #fff;
+}
+.pcard .cap .nm {
+  font-family: var(--font-display), serif;
+  font-size: 1.3rem;
+  color: #fff;
+}
+.pcard .cap .rl {
+  font-size: 0.85rem;
+  color: #cdd8ec;
+  margin-top: 0.1rem;
+}
+/* drop-in real photo later: same frame, swap figure for next/image */
+.pcard .photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* --------------------------- intro band ------------------------------- */
+.intro {
+  background: var(--paper-warm);
+}
+.intro .grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: center;
+}
+.pitfalls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 1.6rem;
+}
+.chip {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--navy);
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.5rem 0.95rem;
+  box-shadow: var(--shadow-soft);
+}
+.statement {
+  font-family: var(--font-display), serif;
+  font-weight: 440;
+  font-size: clamp(1.5rem, 1.2rem + 1.4vw, 2.1rem);
+  line-height: 1.25;
+  color: var(--navy);
+}
+.statement em {
+  font-style: italic;
+  color: var(--ember);
+}
+
+/* ---------------------------- offer cards ----------------------------- */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.3rem;
+  margin-top: 3rem;
+}
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.8rem 1.6rem 1.7rem;
+  box-shadow: var(--shadow-soft);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+}
+.card .badge {
+  width: 54px;
+  height: 54px;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(160deg, #eaf1fb, #dfeaf9);
+  color: var(--blue-ink);
+  margin-bottom: 1.1rem;
+}
+.card h3 {
+  font-size: 1.32rem;
+  font-weight: 520;
+}
+.card p {
+  margin-top: 0.6rem;
+  font-size: 1rem;
+}
+.card .more {
+  /* push to the card's bottom so the link lines up across the row */
+  margin-top: auto;
+  padding-top: 1.2rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--ember-text);
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+.card .more .arr {
+  transition: transform 0.25s var(--ease);
+}
+.card:hover .more .arr,
+.card:focus-within .more .arr {
+  transform: translateX(4px);
+}
+.card .topbar {
+  position: absolute;
+  left: 1.6rem;
+  right: 1.6rem;
+  top: 0;
+  height: 3px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, var(--ember), var(--gold));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s var(--ease);
+}
+.card:hover .topbar,
+.card:focus-within .topbar {
+  transform: scaleX(1);
+}
+/* a card that is itself a link (keeps the .card flex column) */
+a.card {
+  color: inherit;
+}
+
+/* --------------------------- reassurance ------------------------------ */
+.reassure {
+  background: linear-gradient(180deg, #fff, #fbfaf7);
+}
+.reassure .grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: center;
+}
+.gains {
+  display: grid;
+  gap: 0.9rem;
+  margin-top: 0.4rem;
+}
+.gain {
+  display: flex;
+  gap: 0.85rem;
+  align-items: flex-start;
+}
+.gain .tick {
+  flex: 0 0 auto;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #fdeede;
+  color: var(--ember);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.15rem;
+}
+.gain b {
+  color: var(--navy);
+  font-weight: 700;
+}
+.quotebox {
+  background: var(--navy);
+  color: #fff;
+  border-radius: var(--radius-lg);
+  padding: 2.1rem 2rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+.quotebox .qarc {
+  position: absolute;
+  right: -34px;
+  bottom: -34px;
+  width: 44%;
+  opacity: 0.32;
+}
+.quotebox .qt {
+  font-family: var(--font-display), serif;
+  font-style: italic;
+  font-weight: 440;
+  font-size: 1.45rem;
+  line-height: 1.35;
+  position: relative;
+  z-index: 1;
+}
+.quotebox .at {
+  margin-top: 1.2rem;
+  font-size: 0.92rem;
+  color: #c9d4e8;
+  position: relative;
+  z-index: 1;
+}
+
+/* --------------------------- about teaser ----------------------------- */
+.about-teaser .grid {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: clamp(2rem, 5vw, 3.5rem);
+  align-items: center;
+}
+.mini-portrait {
+  aspect-ratio: 1 / 1;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(165deg, var(--blue), var(--navy));
+  border: 6px solid #fff;
+  outline: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+}
+.mini-portrait .figure {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+.mini-portrait .figure svg {
+  width: 64%;
+  opacity: 0.92;
+}
+.mini-portrait .tag {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--navy);
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 0.32rem 0.6rem;
+  border-radius: 999px;
+}
+.stat-row {
+  display: flex;
+  gap: 2.2rem;
+  margin-top: 1.6rem;
+  flex-wrap: wrap;
+}
+.stat .n {
+  font-family: var(--font-display), serif;
+  font-size: 2rem;
+  color: var(--ember);
+  font-weight: 520;
+  line-height: 1;
+}
+.stat .l {
+  font-size: 0.86rem;
+  color: var(--muted);
+  margin-top: 0.3rem;
+}
+
+/* ----------------------------- final cta ------------------------------ */
+.final {
+  background: linear-gradient(160deg, var(--navy), var(--navy-deep));
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+.final .farc {
+  position: absolute;
+  left: -5%;
+  bottom: -40%;
+  width: 60%;
+  opacity: 0.55;
+}
+.final .wrap {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.final h2 {
+  color: #fff;
+  font-size: clamp(2rem, 1.5rem + 2vw, 3rem);
+  max-width: 18ch;
+  font-weight: 480;
+}
+.final p {
+  margin-top: 1.1rem;
+  color: #cdd6e8;
+  max-width: 40rem;
+}
+.final .btn-row {
+  margin-top: 2rem;
+  display: flex;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.final .contacts {
+  margin-top: 2rem;
+  display: flex;
+  gap: 1.6rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  color: #aebbd4;
+  font-size: 0.95rem;
+}
+.final .contacts a {
+  color: #fff;
+  font-weight: 600;
+}
+.final .contacts a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ------------------------------ footer -------------------------------- */
+.site-footer {
+  background: #fff;
+  border-top: 1px solid var(--line);
+  padding: 3rem 0 2.2rem;
+}
+.foot {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+.foot .ftag {
+  color: var(--muted);
+  font-size: 0.92rem;
+  max-width: 22rem;
+  margin-top: 1rem;
+}
+.foot h2 {
+  font-family: var(--font-sans), sans-serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--navy);
+  margin: 0.2rem 0 0.9rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+.foot a {
+  display: block;
+  color: var(--body);
+  padding: 0.28rem 0;
+  font-size: 0.97rem;
+}
+.foot a:hover {
+  color: var(--ember);
+}
+.foot-bottom {
+  max-width: var(--maxw);
+  margin: 2.2rem auto 0;
+  padding: 1.4rem 1.5rem 0;
+  border-top: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+/* ----------------------- interior page hero --------------------------- */
+.page-hero {
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--line);
+}
+.page-hero.has-portrait .wrap {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: center;
+}
+.page-hero h1 {
+  font-size: clamp(2.05rem, 1.5rem + 2.6vw, 3.9rem);
+  font-weight: 480;
+  letter-spacing: -0.02em;
+  margin-top: 1.1rem;
+}
+.page-hero p.lead {
+  margin-top: 1.3rem;
+  max-width: 38rem;
+}
+/* contact: no full-width divider; let the intro flow into the methods */
+.page-hero.contact-intro {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+.contact-body {
+  padding-top: clamp(2rem, 4vw, 3rem);
+}
+.contact-h {
+  font-size: clamp(1.6rem, 1.3rem + 1vw, 2.1rem);
+}
+
+/* offset jump-links so the sticky header doesn't cover the target */
+.anchor {
+  scroll-margin-top: 104px;
+}
+
+/* feature row: heading left, body right */
+.feature {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+  align-items: start;
+}
+.feature + .feature {
+  margin-top: clamp(3rem, 6vw, 4.5rem);
+  padding-top: clamp(3rem, 6vw, 4.5rem);
+  border-top: 1px solid var(--line);
+}
+.feature .label {
+  font-family: var(--font-display), serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--ember-text);
+}
+.feature h2 {
+  font-size: clamp(1.7rem, 1.3rem + 1.4vw, 2.3rem);
+  margin-top: 0.5rem;
+}
+.feature .body p {
+  margin-top: 1rem;
+}
+.feature .body p:first-child {
+  margin-top: 0;
+}
+
+/* learning-outcome / gain list */
+.checklist {
+  list-style: none;
+  padding: 0;
+  margin: 1.4rem 0 0;
+  display: grid;
+  gap: 0.85rem;
+}
+.checklist li {
+  display: flex;
+  gap: 0.8rem;
+  align-items: flex-start;
+}
+.checklist .tick {
+  flex: 0 0 auto;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #fdeede;
+  color: var(--ember);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.18rem;
+}
+
+/* contact methods */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: center;
+}
+.method-list {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.6rem;
+}
+.method {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.2rem 1.3rem;
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
+}
+a.method:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow);
+}
+.method .ic {
+  flex: 0 0 auto;
+  width: 46px;
+  height: 46px;
+  border-radius: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(160deg, #eaf1fb, #dfeaf9);
+  color: var(--blue-ink);
+}
+.method .k {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.method .v {
+  display: block;
+  font-family: var(--font-display), serif;
+  font-size: 1.15rem;
+  color: var(--navy);
+  margin-top: 0.1rem;
+  word-break: break-word;
+}
+
+/* credentials note */
+.note-card {
+  background: var(--paper-warm);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.6rem 1.7rem;
+}
+.note-card h3 {
+  font-size: 1.2rem;
+  font-weight: 520;
+}
+.note-card p {
+  margin-top: 0.6rem;
+}
+
+/* 404 */
+.notfound {
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+}
+.notfound .wrap {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.notfound .code {
+  font-family: var(--font-display), serif;
+  font-size: clamp(3.5rem, 2rem + 6vw, 6rem);
+  color: var(--navy);
+  font-weight: 500;
+  line-height: 1;
+}
+.notfound h1 {
+  font-size: clamp(1.6rem, 1.3rem + 1vw, 2.1rem);
+  margin-top: 1rem;
+}
+.notfound p {
+  margin-top: 1rem;
+  max-width: 34rem;
+}
+
+/* ---------------------- page transition ------------------------------- */
+.page-transition {
+  animation: page-in 0.42s var(--ease) both;
+}
+@keyframes page-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ----------------------- reveal animation ----------------------------- */
+body.animate .reveal {
+  opacity: 0;
+  transform: translateY(20px);
+}
+body.animate .reveal.in {
+  opacity: 1;
+  transform: none;
+  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+}
+/* anchored sections fade without the vertical shift, so jump-link scrolling
+   lands precisely on the section's top line (no post-scroll jitter). */
+body.animate .feature.reveal {
+  transform: none;
+}
+body.animate .stagger > * {
+  opacity: 0;
+  transform: translateY(20px);
+}
+body.animate .stagger.in > * {
+  opacity: 1;
+  transform: none;
+  transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
+}
+body.animate .stagger.in > *:nth-child(2) {
+  transition-delay: 0.09s;
+}
+body.animate .stagger.in > *:nth-child(3) {
+  transition-delay: 0.18s;
+}
+.arc-draw {
+  transform: scaleX(0);
+  transform-origin: left;
+}
+body.animate .arc-draw.in {
+  animation: draw 0.9s 0.25s var(--ease) forwards;
+}
+body:not(.animate) .arc-draw {
+  transform: none;
+}
+@keyframes draw {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* ---------------------------- responsive ------------------------------ */
+@media (max-width: 880px) {
+  .nav-links {
+    display: none;
+  }
+  .menu-btn {
+    display: block;
+  }
+  .hero .wrap {
+    grid-template-columns: 1fr;
+    padding-top: 2.5rem;
+  }
+  .portrait {
+    order: -1;
+    width: min(380px, 100%);
+    margin: 0 auto;
+  }
+  .intro .grid,
+  .reassure .grid,
+  .about-teaser .grid,
+  .page-hero.has-portrait .wrap,
+  .feature,
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+  .page-hero.has-portrait .portrait {
+    width: min(340px, 100%);
+  }
+  .cards {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .foot {
+    grid-template-columns: 1fr 1fr;
+  }
+  .about-teaser .mini-portrait {
+    max-width: 300px;
+  }
+}
+@media (max-width: 520px) {
+  .foot {
+    grid-template-columns: 1fr;
+  }
+  .final .contacts {
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  body.animate .reveal,
+  body.animate .stagger > * {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .arc-draw {
+    transform: none !important;
+    animation: none !important;
+  }
+  .page-transition {
+    animation: none !important;
+  }
+  .btn,
+  .card,
+  .method,
+  a.card {
+    transition: none !important;
+  }
 }
