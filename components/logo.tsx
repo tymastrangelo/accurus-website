@@ -1,34 +1,48 @@
-import { LogoMark } from "./logo-mark";
+import Image from "next/image";
 
 /**
- * Full Accurus Research lockup: the vectorized mark beside (or above) the
- * wordmark, set in Fraunces so it matches the brand's display face exactly and
- * stays real, selectable, crisp text. Used in the header (horizontal) and the
- * footer (stacked, with tagline).
+ * Accurus Research brand lockup, using Doug's official artwork with the white
+ * background keyed out to transparency. The header and footer get the full
+ * horizontal lockup; the narrow mobile panel gets the compact "A" mark alone.
+ * Display size is set per placement by the `brand-logo--*` CSS classes.
  */
+const ASSETS = {
+  header: {
+    src: "/accurus-logo.png",
+    width: 1159,
+    height: 304,
+    alt: "Accurus Research — Better Surveys. Better Decisions.",
+  },
+  footer: {
+    src: "/accurus-logo.png",
+    width: 1159,
+    height: 304,
+    alt: "Accurus Research — Better Surveys. Better Decisions.",
+  },
+  mobile: {
+    src: "/accurus-mark.png",
+    width: 240,
+    height: 179,
+    alt: "Accurus Research",
+  },
+} as const;
+
 export function Logo({
-  variant = "horizontal",
-  markSize = 38,
-  uid = "logo",
-  withTagline = false,
+  variant = "header",
+  priority = false,
 }: {
-  variant?: "horizontal" | "stacked";
-  markSize?: number;
-  uid?: string;
-  withTagline?: boolean;
+  variant?: keyof typeof ASSETS;
+  priority?: boolean;
 }) {
+  const asset = ASSETS[variant];
   return (
-    <span className={`logo${variant === "stacked" ? " stacked" : ""}`}>
-      <LogoMark size={markSize} uid={uid} />
-      <span className="wordmark">
-        <span className="word-main">ACCURUS</span>
-        <span className="word-sub">
-          <span className="word-sub-t">RESEARCH</span>
-        </span>
-        {withTagline ? (
-          <span className="tagline">Better Surveys. Better Decisions.</span>
-        ) : null}
-      </span>
-    </span>
+    <Image
+      className={`brand-logo brand-logo--${variant}`}
+      src={asset.src}
+      alt={asset.alt}
+      width={asset.width}
+      height={asset.height}
+      priority={priority}
+    />
   );
 }

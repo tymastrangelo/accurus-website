@@ -101,7 +101,7 @@ export function MobileNav() {
         inert={!open}
       >
         <div className="ptop">
-          <Logo markSize={30} uid="mobile" />
+          <Logo variant="mobile" />
           <button className="menu-btn" aria-label="Close menu" onClick={close}>
             <CloseIcon size={26} />
           </button>

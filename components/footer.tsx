@@ -8,7 +8,7 @@ export function Footer() {
     <footer className="site-footer">
       <div className="wrap foot">
         <div>
-          <Logo variant="stacked" markSize={56} uid="footer" withTagline />
+          <Logo variant="footer" />
           <p className="ftag">
             Practical survey research training and advisory for organizations that want stronger
             data and better decisions.

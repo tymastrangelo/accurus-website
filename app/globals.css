@@ -215,70 +215,24 @@ img {
   transform: translateX(3px);
 }
 
-/* ------------------------------- logo --------------------------------- */
-.logo {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.62rem;
-  line-height: 1;
+/* --------------------------- brand logo image ------------------------- */
+/* Official Accurus artwork (white background keyed to transparency). Width is
+   left auto so the aspect ratio is preserved; height sets the display size. */
+.brand-logo {
+  display: block;
+  width: auto;
+  height: 52px;
 }
-.logo .wordmark {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.12em;
+.brand-logo--footer {
+  height: 66px;
 }
-.logo .word-main {
-  font-family: var(--font-display), serif;
-  font-weight: 600;
-  font-size: 1.34rem;
-  letter-spacing: 0.12em;
-  /* drop the trailing letter-spacing so the glyph run centers true */
-  margin-right: -0.12em;
-  color: var(--navy);
+.brand-logo--mobile {
+  height: 38px;
 }
-.logo .word-sub {
-  display: flex;
-  align-items: center;
-  gap: 0.4em;
-  font-family: var(--font-display), serif;
-  font-weight: 600;
-  font-size: 0.74rem;
-  color: var(--ember-text);
-}
-.logo .word-sub-t {
-  letter-spacing: 0.34em;
-  /* cancel trailing letter-spacing so the flanking rules sit symmetric */
-  margin-right: -0.34em;
-}
-.logo .word-sub::before,
-.logo .word-sub::after {
-  content: "";
-  height: 1.5px;
-  width: 0.9em;
-  background: var(--ember-text);
-  flex: 0 0 auto;
-}
-/* stacked variant - footer */
-.logo.stacked {
-  flex-direction: column;
-  gap: 0.55rem;
-  text-align: center;
-}
-.logo.stacked .word-main {
-  font-size: 1.5rem;
-}
-.logo.stacked .word-sub {
-  font-size: 0.78rem;
-}
-.logo .tagline {
-  font-family: var(--font-display), serif;
-  font-style: italic;
-  font-size: 0.82rem;
-  color: var(--navy);
-  margin-top: 0.45rem;
-  letter-spacing: 0;
-  text-indent: 0;
+@media (max-width: 880px) {
+  .brand-logo--header {
+    height: 46px;
+  }
 }
 
 /* ------------------------------ header -------------------------------- */
