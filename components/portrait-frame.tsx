@@ -29,12 +29,19 @@ export function PortraitFrame({
   reveal = false,
   photoSrc,
   photoAlt,
+  aspectRatio,
+  caption,
+  role,
 }: {
   variant?: "hero" | "mini";
   uid?: string;
   reveal?: boolean;
   photoSrc?: string;
   photoAlt?: string;
+  /** Override the default 4 / 4.5 portrait ratio (e.g. "5 / 4" for a landscape shot). */
+  aspectRatio?: string;
+  caption?: string;
+  role?: string;
 }) {
   if (variant === "mini") {
     return (
@@ -62,7 +69,7 @@ export function PortraitFrame({
   return (
     <div className={`portrait${reveal ? " reveal" : ""}`}>
       <Arc variant="portrait" uid={uid} />
-      <div className="pcard">
+      <div className="pcard" style={aspectRatio ? { aspectRatio } : undefined}>
         {photoSrc ? (
           <Image
             className="photo"
@@ -81,8 +88,8 @@ export function PortraitFrame({
           </>
         )}
         <div className="cap">
-          <div className="nm">Doug Cox</div>
-          <div className="rl">Founder · Accurus Research</div>
+          <div className="nm">{caption ?? "Doug Cox"}</div>
+          <div className="rl">{role ?? "Founder · Accurus Research"}</div>
         </div>
       </div>
     </div>

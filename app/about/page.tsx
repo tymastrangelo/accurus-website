@@ -26,13 +26,29 @@ export default function AboutPage() {
               organizations, helping them run surveys effectively and use the results to drive
               action.
             </p>
+            <div className="stat-row">
+              <div className="stat">
+                <div className="n">40+</div>
+                <div className="l">Years in survey research</div>
+              </div>
+              <div className="stat">
+                <div className="n">4</div>
+                <div className="l">Sectors served</div>
+              </div>
+              <div className="stat">
+                <div className="n">2-day</div>
+                <div className="l">Core workshop format</div>
+              </div>
+            </div>
           </div>
           <PortraitFrame
             variant="hero"
             uid="about"
             reveal
-            photoSrc="/doug-cox-headshot.jpg"
-            photoAlt="Doug Cox, founder of Accurus Research"
+            photoSrc="/doug-cox-workshop.jpg"
+            photoAlt="Doug Cox leading a two-day survey research workshop"
+            aspectRatio="5 / 4"
+            role="Leading a survey research workshop"
           />
         </div>
       </section>
@@ -63,9 +79,10 @@ export default function AboutPage() {
             </div>
             <div className="body">
               <p>
-                My approach isn&rsquo;t academic, statistics-driven, or overly technical. It&rsquo;s
-                practical training grounded in real-world experience from 40-plus years in the
-                survey industry.
+                This training has not been designed for academicians, statisticians, or as a
+                certification program. Instead, it involves the practical application of sound
+                research methods based on 40-plus years of real-world experience leading survey
+                research projects.
               </p>
               <p>
                 I help clients sidestep common problems and focus on what they need to know: setting

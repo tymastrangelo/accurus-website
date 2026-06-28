@@ -135,7 +135,7 @@ img {
   min-width: 0;
 }
 .eyebrow {
-  font-size: 0.78rem;
+  font-size: 0.86rem;
   font-weight: 700;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -231,7 +231,7 @@ img {
 .logo .word-main {
   font-family: var(--font-display), serif;
   font-weight: 600;
-  font-size: 1.18rem;
+  font-size: 1.34rem;
   letter-spacing: 0.12em;
   /* drop the trailing letter-spacing so the glyph run centers true */
   margin-right: -0.12em;
@@ -243,7 +243,7 @@ img {
   gap: 0.4em;
   font-family: var(--font-display), serif;
   font-weight: 600;
-  font-size: 0.66rem;
+  font-size: 0.74rem;
   color: var(--ember-text);
 }
 .logo .word-sub-t {
@@ -512,7 +512,7 @@ section {
 .portrait {
   position: relative;
   width: 100%;
-  max-width: 440px;
+  max-width: 390px;
   margin-left: auto;
 }
 .portrait .bigarc {
@@ -1207,14 +1207,30 @@ body:not(.animate) .arc-draw {
   .menu-btn {
     display: block;
   }
+  /* drop the photo below the headline (not above it) and shrink it */
+  .hero-copy {
+    display: contents;
+  }
   .hero .wrap {
     grid-template-columns: 1fr;
+    grid-template-areas:
+      "head"
+      "portrait"
+      "body";
     padding-top: 2.5rem;
   }
-  .portrait {
-    order: -1;
-    width: min(380px, 100%);
-    margin: 0 auto;
+  .hero-head {
+    grid-area: head;
+    min-width: 0;
+  }
+  .hero .portrait {
+    grid-area: portrait;
+    width: min(300px, 100%);
+    margin: 1.4rem auto 0.4rem;
+  }
+  .hero-body {
+    grid-area: body;
+    min-width: 0;
   }
   .intro .grid,
   .reassure .grid,

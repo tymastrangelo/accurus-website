@@ -9,7 +9,7 @@ export function Header() {
     <header className="site-header" id="site-header">
       <div className="wrap nav">
         <Link className="brand" href="/">
-          <Logo markSize={38} uid="header" />
+          <Logo markSize={46} uid="header" />
         </Link>
         <NavLinks />
         <MobileNav />

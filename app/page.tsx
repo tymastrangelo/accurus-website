@@ -19,36 +19,40 @@ export default function HomePage() {
       <section className="hero">
         <div className="wrap">
           <div className="hero-copy">
-            <Eyebrow className="reveal">Survey research training &amp; advisory</Eyebrow>
-            <h1 className="reveal">
-              <span className="ln">Better Surveys.</span>
-              <span className="ln">
-                Better{" "}
-                <span className="kw">
-                  Decisions.
-                  <Arc variant="underline" uid="hero" />
+            <div className="hero-head">
+              <Eyebrow className="reveal">Survey research training &amp; advisory</Eyebrow>
+              <h1 className="reveal">
+                <span className="ln">Better Surveys.</span>
+                <span className="ln">
+                  Better{" "}
+                  <span className="kw">
+                    Decisions.
+                    <Arc variant="underline" uid="hero" />
+                  </span>
                 </span>
-              </span>
-            </h1>
-            <p className="lead reveal">
-              I help organizations improve the quality of their surveys so they can make better
-              decisions with confidence, drawing on more than 40 years of survey research for
-              business, political, government, and nonprofit clients.
-            </p>
-            <div className="hero-cta reveal">
-              <CTA href="/contact" variant="primary" withArrow>
-                Start a conversation
-              </CTA>
-              <CTA href="/services" variant="ghost">
-                Explore the workshop
-              </CTA>
+              </h1>
             </div>
-            <div className="hero-meta reveal">
-              <span>Workshops</span>
-              <span className="dot" aria-hidden="true" />
-              <span>Customized programs</span>
-              <span className="dot" aria-hidden="true" />
-              <span>Advisory support</span>
+            <div className="hero-body">
+              <p className="lead reveal">
+                I help organizations improve the quality of their surveys so they can make better
+                decisions with confidence, drawing on more than 40 years of survey research for
+                business, political, government, and nonprofit clients.
+              </p>
+              <div className="hero-cta reveal">
+                <CTA href="/contact" variant="primary" withArrow>
+                  Start a conversation
+                </CTA>
+                <CTA href="/services" variant="ghost">
+                  Explore the workshop
+                </CTA>
+              </div>
+              <div className="hero-meta reveal">
+                <span>Workshops</span>
+                <span className="dot" aria-hidden="true" />
+                <span>Customized programs</span>
+                <span className="dot" aria-hidden="true" />
+                <span>Advisory support</span>
+              </div>
             </div>
           </div>
 
@@ -56,7 +60,7 @@ export default function HomePage() {
             variant="hero"
             uid="hero"
             reveal
-            photoSrc="/doug-cox-headshot.jpg"
+            photoSrc="/doug-cox-portrait.jpg"
             photoAlt="Doug Cox, founder of Accurus Research"
           />
         </div>
@@ -77,13 +81,14 @@ export default function HomePage() {
                 <span className="chip">Unclear objectives</span>
                 <span className="chip">Weak sampling</span>
                 <span className="chip">Biased questions</span>
+                <span className="chip">Failing to follow through</span>
               </div>
             </div>
             <div className="reveal">
               <p>
                 I help organizations strengthen every stage of the survey process: defining the
-                objective, choosing the right method, building a sound sample, writing solid
-                questions, and turning findings into action.
+                objective, choosing the right data collection method, building a sound sample,
+                writing solid questions, and turning findings into action.
               </p>
             </div>
           </div>
@@ -160,7 +165,7 @@ export default function HomePage() {
                     <CheckIcon size={14} />
                   </span>
                   <div>
-                    <b>Sound judgment</b> about what to ask and what to avoid.
+                    <b>Sound judgment</b> in designing and carrying out your survey project.
                   </div>
                 </div>
                 <div className="gain">
@@ -189,51 +194,6 @@ export default function HomePage() {
                 My job is to close that gap for your team.&rdquo;
               </p>
               <p className="at">Doug Cox, Accurus Research</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ABOUT TEASER */}
-      <section className="about-teaser">
-        <div className="wrap">
-          <div className="grid">
-            <PortraitFrame variant="mini" reveal photoSrc="/doug-cox-headshot.jpg" photoAlt="Doug Cox" />
-            <div className="reveal">
-              <Eyebrow>About Doug</Eyebrow>
-              <h2
-                style={{
-                  marginTop: ".9rem",
-                  fontSize: "clamp(1.85rem, 1.4rem + 1.7vw, 2.6rem)",
-                }}
-              >
-                Four decades of survey research, now in your corner
-              </h2>
-              <p style={{ marginTop: "1rem" }}>
-                After a four-decade career designing and leading survey research for business,
-                political, government, and nonprofit clients, Doug now brings that experience
-                directly to decision makers, helping teams run surveys effectively and use the
-                results to drive action.
-              </p>
-              <div className="stat-row">
-                <div className="stat">
-                  <div className="n">40+</div>
-                  <div className="l">Years in survey research</div>
-                </div>
-                <div className="stat">
-                  <div className="n">4</div>
-                  <div className="l">Sectors served</div>
-                </div>
-                <div className="stat">
-                  <div className="n">2-day</div>
-                  <div className="l">Core workshop format</div>
-                </div>
-              </div>
-              <div style={{ marginTop: "1.8rem" }}>
-                <CTA href="/about" variant="ghost" withArrow>
-                  More about Doug
-                </CTA>
-              </div>
             </div>
           </div>
         </div>

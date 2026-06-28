@@ -30,8 +30,9 @@ export default function ServicesPage() {
           <h1>Training and guidance for teams that rely on surveys</h1>
           <p className="lead">
             I provide practical survey research training and advisory services for organizations
-            that want stronger data and better decisions, for the decision makers and teams who use
-            surveys to understand customers, employees, stakeholders, voters, or the public.
+            that want stronger data and better decisions. Training is designed for decision makers
+            and teams who use surveys to understand customers, employees, stakeholders, voters, or
+            the public.
           </p>
         </div>
       </section>
@@ -74,7 +75,7 @@ export default function ServicesPage() {
             <div className="body">
               <p>
                 Prefer in-house training? Workshop content can be tailored to your industry and the
-                people you need to survey, so every example and exercise maps to the work your team
+                people you need to survey, so examples and exercises map to the work your team
                 actually does.
               </p>
             </div>

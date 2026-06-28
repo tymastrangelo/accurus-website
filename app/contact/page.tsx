@@ -20,8 +20,8 @@ export default function ContactPage() {
           <h1>Let&rsquo;s talk</h1>
           <p className="lead">
             If your organization wants to improve how it designs, conducts, and interprets surveys,
-            I&rsquo;d welcome the chance to talk, whether about a workshop for your team or an
-            advisory role on a project already underway.
+            I&rsquo;d welcome the chance to talk, whether about a workshop for your team or in an
+            advisory role for an upcoming survey project or a project already underway.
           </p>
         </div>
       </section>
