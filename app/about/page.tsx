@@ -79,10 +79,9 @@ export default function AboutPage() {
             </div>
             <div className="body">
               <p>
-                This training has not been designed for academicians, statisticians, or as a
-                certification program. Instead, it involves the practical application of sound
-                research methods based on 40-plus years of real-world experience leading survey
-                research projects.
+                This training is designed for the practical application of sound research
+                methods based on 40-plus years of real-world experience leading survey research
+                projects — not for academicians, statisticians, or as a certification program.
               </p>
               <p>
                 I help clients sidestep common problems and focus on what they need to know: setting

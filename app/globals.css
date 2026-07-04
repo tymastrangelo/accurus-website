@@ -221,7 +221,7 @@ img {
 .brand-logo {
   display: block;
   width: auto;
-  height: 52px;
+  height: 60px;
 }
 .brand-logo--footer {
   height: 66px;
@@ -231,7 +231,7 @@ img {
 }
 @media (max-width: 880px) {
   .brand-logo--header {
-    height: 46px;
+    height: 52px;
   }
 }
 
