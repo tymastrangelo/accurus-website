@@ -32,7 +32,16 @@ export function Footer() {
         </div>
       </div>
       <div className="foot-bottom">
-        <span>© {new Date().getFullYear()} Accurus Research. All rights reserved.</span>
+        <span>
+          © <span id="copyright-year" suppressHydrationWarning>{new Date().getFullYear()}</span>{" "}
+          Accurus Research. All rights reserved.
+        </span>
+        {/* Statically built pages bake in the build-time year; this corrects it in the browser before paint. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `document.getElementById("copyright-year").textContent=new Date().getFullYear()`,
+          }}
+        />
         <span>Better Surveys. Better Decisions.</span>
       </div>
     </footer>
