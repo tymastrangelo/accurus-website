@@ -12,8 +12,8 @@ export const site = {
   url: "https://accurusresearch.com",
   email: "dougcox@accurusresearch.com",
   // E.164 for tel: links; display version kept separate so punctuation stays human.
-  phone: "+13362600012",
-  phoneDisplay: "336.260.0012",
+  phone: "+13362606451",
+  phoneDisplay: "336.260.6451",
   linkedin: "https://linkedin.com/in/douglascox1",
 } as const;
 
