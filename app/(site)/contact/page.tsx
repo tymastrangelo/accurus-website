@@ -7,9 +7,16 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Talk with Doug Cox about a survey research workshop for your team or advisory support on a project already underway. Email, phone, or LinkedIn.",
+    "Start a conversation with Doug Cox about an executive presentation, the two-day survey workshop, or an experienced second set of eyes on an upcoming survey.",
   alternates: { canonical: "/contact" },
 };
+
+const reasons = [
+  "You may be considering an executive presentation for your leadership team.",
+  "You may want to develop survey research capability within your organization.",
+  "You may have an upcoming survey and want an experienced second set of eyes.",
+  "Or you may simply be wondering whether Accurus Research is a good fit for what your organization needs.",
+];
 
 export default function ContactPage() {
   return (
@@ -17,11 +24,14 @@ export default function ContactPage() {
       <section className="page-hero contact-intro">
         <div className="wrap reveal">
           <Eyebrow>Contact</Eyebrow>
-          <h1>Let&rsquo;s talk</h1>
-          <p className="lead">
-            If your organization wants to improve how it designs, conducts, and interprets surveys,
-            I&rsquo;d welcome the chance to talk, whether about a workshop for your team or in an
-            advisory role for an upcoming survey project or a project already underway.
+          <h1>Start a Conversation</h1>
+          <ul className="qlist plain contact-reasons">
+            {reasons.map((r) => (
+              <li key={r}>{r}</li>
+            ))}
+          </ul>
+          <p className="lead" style={{ marginTop: "1.4rem" }}>
+            <b>Let&rsquo;s talk.</b>
           </p>
         </div>
       </section>
@@ -29,9 +39,8 @@ export default function ContactPage() {
       <section className="contact-body">
         <div className="wrap">
           <div className="contact-grid">
-            {/* contact methods */}
             <div className="reveal">
-              <h2 className="contact-h">The fastest way to reach me</h2>
+              <h2 className="contact-h">Contact Doug</h2>
               <div className="method-list">
                 <a className="method" href={`mailto:${site.email}`}>
                   <span className="ic">
@@ -68,13 +77,12 @@ export default function ContactPage() {
               </div>
             </div>
 
-            {/* warm aside */}
             <div className="quotebox reveal">
               <Arc variant="quote" uid="contact" />
-              <p className="qt">Better survey design leads to better decisions.</p>
-              <p className="at" style={{ color: "#cdd6e8" }}>
-                Tell me about your organization and the people you need to survey, and I&rsquo;ll
-                point you toward the workshop or advisory engagement that fits.
+              <p className="qt">There is no need to have everything figured out before reaching out.</p>
+              <p className="at">
+                Tell us what prompted the conversation, what you are trying to accomplish and what
+                questions you have. We can begin there.
               </p>
             </div>
           </div>

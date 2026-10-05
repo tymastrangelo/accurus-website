@@ -44,3 +44,6 @@ next-env.d.ts
 *.md
 *.docx
 /design-reference/
+
+# local knowledge graph (graphify)
+/graphify-out/

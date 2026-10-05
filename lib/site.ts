@@ -8,7 +8,7 @@ export const site = {
   founder: "Doug Cox",
   tagline: "Better Surveys. Better Decisions.",
   description:
-    "Practical survey research training and advisory for small and mid-sized organizations. Two-day workshops and expert guidance from a 40-year survey professional.",
+    "Accurus Research helps organizations recognize critical information gaps and build the internal survey capability to close them with reliable evidence: an executive presentation, a two-day workshop, and advisory support.",
   url: "https://accurusresearch.com",
   email: "dougcox@accurusresearch.com",
   // E.164 for tel: links; display version kept separate so punctuation stays human.
@@ -19,7 +19,10 @@ export const site = {
 
 export const nav = [
   { href: "/", label: "Home" },
+  { href: "/executive-presentation", label: "Executive Presentation" },
+  { href: "/workshop", label: "Workshop" },
+  { href: "/advisory", label: "Advisory Services" },
   { href: "/about", label: "About" },
-  { href: "/services", label: "Services" },
+  { href: "/insights", label: "Insights" },
   { href: "/contact", label: "Contact" },
 ] as const;

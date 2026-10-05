@@ -1,10 +1,7 @@
 import type { Metadata } from "next";
 import { Fraunces, Hanken_Grotesk } from "next/font/google";
 import "./globals.css";
-import { Header } from "@/components/header";
-import { Footer } from "@/components/footer";
 import { Reveal } from "@/components/reveal";
-import { PageTransition } from "@/components/page-transition";
 import { jsonLd } from "@/lib/jsonld";
 import { site } from "@/lib/site";
 
@@ -61,11 +58,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <a className="skip-link" href="#main">
           Skip to content
         </a>
-        <Header />
-        <main id="main">
-          <PageTransition>{children}</PageTransition>
-        </main>
-        <Footer />
+        {/* chrome lives in the (site) and (campaign) group layouts */}
+        {children}
         <Reveal />
       </body>
     </html>

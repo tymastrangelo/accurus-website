@@ -10,8 +10,8 @@ export function Footer() {
         <div>
           <Logo variant="footer" />
           <p className="ftag">
-            Practical survey research training and advisory for organizations that want stronger
-            data and better decisions.
+            Helping organizations close critical information gaps through better survey research
+            that produces reliable evidence for better decisions.
           </p>
         </div>
         <div>

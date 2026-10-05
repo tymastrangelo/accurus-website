@@ -3,17 +3,20 @@ import { ArrowRightIcon } from "./icons";
 
 /**
  * Offer card with the gradient top-bar and icon badge. When `href` is set the
- * whole card is a link to the matching Services section; the "more" label names
+ * whole card is a link to the matching page; the "more" label names
  * its destination. Content length is allowed to vary card to card.
  */
 export function ServiceCard({
   icon,
+  kicker,
   title,
   children,
   href,
   more,
 }: {
-  icon: React.ReactNode;
+  icon?: React.ReactNode;
+  /** Optional one-line subtitle under the title (e.g. "Recognize the Information Gap"). */
+  kicker?: string;
   title: string;
   children: React.ReactNode;
   href?: string;
@@ -22,8 +25,9 @@ export function ServiceCard({
   const body = (
     <>
       <span className="topbar" aria-hidden="true" />
-      <div className="badge">{icon}</div>
+      {icon ? <div className="badge">{icon}</div> : null}
       <h3>{title}</h3>
+      {kicker ? <p className="kicker">{kicker}</p> : null}
       <p>{children}</p>
       {more && href ? (
         <span className="more">

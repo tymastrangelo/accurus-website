@@ -5,12 +5,15 @@ import { site } from "@/lib/site";
 /** The dark closing band with the signature arc, shared across all pages. */
 export function FinalCta({
   uid,
-  heading = "Let’s talk about how better survey design leads to better decisions",
-  children = "Whether you’re considering a workshop for your team or want expert eyes on a survey already in motion, I’d be glad to talk it through.",
+  heading = "Better Surveys. Better Decisions.",
+  note,
+  children = "Whether you’re considering an executive presentation, the two-day workshop, or a second set of eyes on an upcoming survey, a conversation is the right place to start.",
 }: {
   uid: string;
   heading?: string;
   children?: React.ReactNode;
+  /** Small italic line under the buttons (e.g. "No sales presentation…"). */
+  note?: string;
 }) {
   return (
     <section className="final">
@@ -19,13 +22,14 @@ export function FinalCta({
         <h2 className="reveal">{heading}</h2>
         <p className="reveal">{children}</p>
         <div className="btn-row reveal">
-          <CTA href={`mailto:${site.email}`} variant="light" withArrow>
+          <CTA href="/contact" variant="light" withArrow>
+            Start a conversation
+          </CTA>
+          <CTA href={`mailto:${site.email}`} variant="outline">
             Email Doug
           </CTA>
-          <CTA href={`tel:${site.phone}`} variant="outline">
-            Call {site.phoneDisplay}
-          </CTA>
         </div>
+        {note ? <p className="final-note reveal">{note}</p> : null}
         <div className="contacts reveal">
           <span>
             Email <a href={`mailto:${site.email}`}>{site.email}</a>

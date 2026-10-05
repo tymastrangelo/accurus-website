@@ -37,21 +37,22 @@ export function WorkshopIcon(props: IconProps) {
   );
 }
 
-export function CustomizeIcon(props: IconProps) {
-  return (
-    <Base {...props}>
-      <path d="M4 7h10M18 7h2M4 17h2M10 17h10" />
-      <circle cx="16" cy="7" r="2.2" />
-      <circle cx="8" cy="17" r="2.2" />
-    </Base>
-  );
-}
-
 export function AdvisoryIcon(props: IconProps) {
   return (
     <Base {...props}>
       <path d="M21 11.5a8.5 8.5 0 0 1-12.2 7.6L3 21l1.9-5.8A8.5 8.5 0 1 1 21 11.5Z" />
       <path d="M9 11h6M9 8h4" />
+    </Base>
+  );
+}
+
+export function PeopleIcon(props: IconProps) {
+  return (
+    <Base {...props}>
+      <circle cx="9" cy="8" r="3.2" />
+      <path d="M3 20c0-3.6 2.7-6 6-6s6 2.4 6 6" />
+      <circle cx="17" cy="9" r="2.5" />
+      <path d="M16 14.2c2.9.2 5 2.4 5 5.8" />
     </Base>
   );
 }

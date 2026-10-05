@@ -23,11 +23,11 @@ export const jsonLd = {
     "Survey methodology",
     "Data interpretation",
   ],
-  serviceType: ["Survey research training", "Survey advisory"],
+  serviceType: ["Executive presentation", "Survey research workshop", "Survey advisory services"],
   founder: {
     "@type": "Person",
     name: site.founder,
-    jobTitle: "Founder",
+    jobTitle: "President",
     description:
       "Survey research professional with a 40-year career serving business, political, government, and nonprofit clients.",
     sameAs: [site.linkedin],

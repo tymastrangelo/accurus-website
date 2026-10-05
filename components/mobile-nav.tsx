@@ -4,7 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { nav, site } from "@/lib/site";
+import { nav } from "@/lib/site";
 import { Logo } from "./logo";
 import { MenuIcon, CloseIcon } from "./icons";
 
@@ -120,9 +120,9 @@ export function MobileNav() {
             </Link>
           );
         })}
-        <a className="btn btn-primary" href={`mailto:${site.email}`} onClick={close}>
-          Let&rsquo;s talk
-        </a>
+        <Link className="btn btn-primary" href="/contact" onClick={close}>
+          Start a conversation
+        </Link>
       </aside>
     </>
   );
