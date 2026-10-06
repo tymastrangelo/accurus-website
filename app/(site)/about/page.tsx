@@ -49,11 +49,11 @@ export default function AboutPage() {
               </div>
               <div className="stat">
                 <div className="n">4</div>
-                <div className="l">Sectors served</div>
+                <div className="l">Core institutional sectors served</div>
               </div>
               <div className="stat">
-                <div className="n">2-day</div>
-                <div className="l">Core workshop format</div>
+                <div className="n">1 million+</div>
+                <div className="l">People surveyed</div>
               </div>
             </div>
           </div>
