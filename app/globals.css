@@ -569,7 +569,7 @@ section {
   margin-top: 1.6rem;
 }
 .chip {
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-weight: 600;
   color: var(--navy);
   background: #fff;
@@ -577,6 +577,11 @@ section {
   border-radius: 999px;
   padding: 0.5rem 0.95rem;
   box-shadow: var(--shadow-soft);
+}
+/* one item per line so the list reads as a clean, left-aligned column */
+.pitfalls.stacked {
+  flex-direction: column;
+  align-items: flex-start;
 }
 .statement {
   font-family: var(--font-display), serif;
@@ -937,6 +942,8 @@ a.card {
 .page-hero p.lead {
   margin-top: 1.3rem;
   max-width: 38rem;
+  /* no single orphaned word on the last line */
+  text-wrap: balance;
 }
 /* contact: no full-width divider; let the intro flow into the methods */
 .page-hero.contact-intro {
@@ -969,7 +976,7 @@ a.card {
 }
 .feature .label {
   font-family: var(--font-display), serif;
-  font-size: 0.95rem;
+  font-size: 1.05rem;
   font-weight: 600;
   color: var(--ember-text);
 }
@@ -1144,6 +1151,19 @@ ol.qlist li::before {
 .feature .body .qlist {
   margin-bottom: 1rem;
 }
+.after-grid {
+  margin-top: 2rem;
+  text-align: center;
+}
+.after-heading {
+  margin-top: 2rem;
+}
+.method.qr img {
+  flex: 0 0 auto;
+  width: 112px;
+  height: auto;
+  border-radius: 8px;
+}
 .contact-reasons {
   max-width: 40rem;
   margin-top: 1.4rem;
@@ -1225,6 +1245,22 @@ ol.qlist li::before {
   font-family: var(--font-display), serif;
   font-weight: 560;
   font-size: 1.12rem;
+}
+/* match each number to its segment in the 7-step cycle graphic */
+.steps.cycle-colors li:nth-child(1) .num {
+  background: #022b61;
+}
+.steps.cycle-colors li:nth-child(2) .num,
+.steps.cycle-colors li:nth-child(5) .num {
+  background: #185bad;
+}
+.steps.cycle-colors li:nth-child(3) .num,
+.steps.cycle-colors li:nth-child(6) .num {
+  background: #bc4006;
+}
+.steps.cycle-colors li:nth-child(4) .num,
+.steps.cycle-colors li:nth-child(7) .num {
+  background: #e97e0a;
 }
 .cycle-grid {
   display: grid;

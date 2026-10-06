@@ -15,6 +15,7 @@ export const site = {
   phone: "+13362606451",
   phoneDisplay: "336.260.6451",
   linkedin: "https://linkedin.com/in/douglascox1",
+  hihello: "https://hihello.com/p/03b0aa2e-fcb9-491d-bd83-cc0f379ede7b",
 } as const;
 
 export const nav = [
@@ -23,6 +24,5 @@ export const nav = [
   { href: "/workshop", label: "Workshop" },
   { href: "/advisory", label: "Advisory Services" },
   { href: "/about", label: "About" },
-  { href: "/insights", label: "Insights" },
   { href: "/contact", label: "Contact" },
 ] as const;

@@ -69,7 +69,7 @@ export default function HomePage() {
             uid="hero"
             reveal
             photoSrc="/doug-cox-portrait.jpg"
-            photoAlt="Douglas Cox, President of Accurus Research"
+            photoAlt="Doug Cox, President of Accurus Research"
             role="President · Accurus Research"
           />
         </div>
@@ -86,7 +86,7 @@ export default function HomePage() {
               </p>
             </div>
             <div className="reveal">
-              <p>
+              <p className="lead">
                 Sometimes the most important question is not <b>&ldquo;What should we do?&rdquo;</b>{" "}
                 It is:
               </p>
@@ -105,7 +105,7 @@ export default function HomePage() {
             <div className="reveal">
               <Eyebrow>The information gap</Eyebrow>
               <h2 className="h2">When What You Know Isn&rsquo;t Enough</h2>
-              <div className="pitfalls">
+              <div className="pitfalls stacked">
                 {moments.map((m) => (
                   <span key={m} className="chip">
                     {m}

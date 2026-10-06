@@ -86,7 +86,8 @@ export default function InformationGapPage() {
 
       <section className="reassure">
         <div className="wrap">
-          <div className="grid">
+          <h2 className="h2 reveal">The Most Dangerous Information May Be the Information You Trust</h2>
+          <div className="grid after-heading">
             <div className="quotebox reveal">
               <Arc variant="quote" uid="landing" />
               <p className="qt">
@@ -95,8 +96,9 @@ export default function InformationGapPage() {
               </p>
             </div>
             <div className="reveal">
-              <Eyebrow>But</Eyebrow>
-              <h2 className="h2">The Most Dangerous Information May Be the Information You Trust</h2>
+              <p className="statement">
+                <em>But&hellip;</em>
+              </p>
               <ul className="qlist plain">
                 {doubts.map((q) => (
                   <li key={q}>{q}</li>

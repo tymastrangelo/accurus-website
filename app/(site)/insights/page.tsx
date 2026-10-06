@@ -9,6 +9,8 @@ export const metadata: Metadata = {
   description:
     "Practical thinking about surveys, evidence and better decisions: survey design, sampling, questionnaire development, data quality, analysis and information gaps.",
   alternates: { canonical: "/insights" },
+  // Hidden until the first articles are ready: out of nav/footer/sitemap and search.
+  robots: { index: false, follow: true },
 };
 
 // ponytail: topics only until the first articles are written; add an article list here then.

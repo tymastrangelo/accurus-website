@@ -7,14 +7,15 @@ import { CTA } from "./cta";
 
 /**
  * Desktop primary navigation with active-page underline via aria-current.
- * Home and Contact are left out here: the logo links home and the CTA is Contact.
+ * Contact is left out here: the CTA is Contact. Home is listed explicitly even
+ * though the logo links home, since not every visitor knows that convention.
  */
 export function NavLinks() {
   const pathname = usePathname();
   return (
     <nav className="nav-links" aria-label="Primary">
-      {nav.filter((item) => item.href !== "/" && item.href !== "/contact").map((item) => {
-        const active = pathname.startsWith(item.href);
+      {nav.filter((item) => item.href !== "/contact").map((item) => {
+        const active = item.href === "/" ? pathname === "/" : pathname.startsWith(item.href);
         return (
           <Link
             key={item.href}

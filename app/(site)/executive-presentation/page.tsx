@@ -52,10 +52,10 @@ export default function ExecutivePresentationPage() {
             variant="hero"
             uid="exec"
             reveal
-            photoSrc="/doug-cox-workshop.jpg"
-            photoAlt="Douglas Cox presenting to a group of leaders"
-            aspectRatio="5 / 4"
-            caption="Douglas Cox"
+            photoSrc="/doug-cox-executive-presentation.jpg"
+            photoAlt="Doug Cox presenting The Cost of Not Knowing to a group of leaders"
+            aspectRatio="3 / 2"
+            caption="Doug Cox"
             role="Presenting to leaders and management teams"
           />
         </div>
@@ -127,8 +127,8 @@ export default function ExecutivePresentationPage() {
 
           <div className="feature reveal">
             <div>
-              <span className="label">The presentation examines</span>
-              <h2>What Participants Will Explore</h2>
+              <span className="label">Key topics</span>
+              <h2>What the Presentation Examines</h2>
             </div>
             <div className="body">
               <ul className="checklist">

@@ -6,9 +6,9 @@ import { FinalCta } from "@/components/final-cta";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "About Douglas Cox",
+  title: "About Doug Cox",
   description:
-    "Douglas Cox, President of Accurus Research, brings more than 40 years of designing and leading survey research to teaching organizations the thinking behind good surveys.",
+    "Doug Cox, President of Accurus Research, brings more than 40 years of designing and leading survey research to teaching organizations the thinking behind good surveys.",
   alternates: { canonical: "/about" },
 };
 
@@ -35,7 +35,7 @@ export default function AboutPage() {
       <section className="page-hero has-portrait">
         <div className="wrap">
           <div className="reveal">
-            <Eyebrow>About Douglas Cox</Eyebrow>
+            <Eyebrow>About Doug Cox</Eyebrow>
             <h1>Four Decades of Survey Research Experience—Now Focused on Teaching Others</h1>
             <p className="lead">
               For more than 40 years, Doug has designed and led survey research projects for
@@ -48,12 +48,12 @@ export default function AboutPage() {
                 <div className="l">Years in survey research</div>
               </div>
               <div className="stat">
-                <div className="n">7</div>
-                <div className="l">Steps in the Survey Success Cycle</div>
+                <div className="n">4</div>
+                <div className="l">Sectors served</div>
               </div>
               <div className="stat">
                 <div className="n">2-day</div>
-                <div className="l">Hands-on workshop</div>
+                <div className="l">Core workshop format</div>
               </div>
             </div>
           </div>
@@ -62,9 +62,9 @@ export default function AboutPage() {
             uid="about"
             reveal
             photoSrc="/doug-cox-office.jpg"
-            photoAlt="Douglas Cox in the Accurus Research office"
+            photoAlt="Doug Cox in the Accurus Research office"
             aspectRatio="1 / 1"
-            caption="Douglas Cox"
+            caption="Doug Cox"
             role="President, Accurus Research · Survey Research Educator & Consultant"
           />
         </div>
@@ -100,7 +100,7 @@ export default function AboutPage() {
         <div className="wrap">
           <div className="feature reveal">
             <div>
-              <span className="label">The difficult part</span>
+              <span className="label">Where expertise matters</span>
               <h2>Why Accurus Research?</h2>
             </div>
             <div className="body">
@@ -158,11 +158,6 @@ export default function AboutPage() {
               <p style={{ marginTop: "1rem" }}>
                 That remains the foundation of everything Accurus Research does.
               </p>
-              <p style={{ marginTop: "1.2rem" }}>
-                <a className="text-link" href={site.linkedin} target="_blank" rel="noopener noreferrer">
-                  View Doug&rsquo;s LinkedIn profile →
-                </a>
-              </p>
             </div>
             <div className="quotebox reveal">
               <Arc variant="quote" uid="about" />
@@ -173,6 +168,11 @@ export default function AboutPage() {
               </p>
             </div>
           </div>
+          <p className="after-grid reveal">
+            <a className="text-link" href={site.linkedin} target="_blank" rel="noopener noreferrer">
+              View Doug&rsquo;s LinkedIn profile →
+            </a>
+          </p>
         </div>
       </section>
 

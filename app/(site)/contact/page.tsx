@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Eyebrow } from "@/components/eyebrow";
 import { Arc } from "@/components/arc";
 import { MailIcon, PhoneIcon, LinkedinIcon } from "@/components/icons";
@@ -72,6 +73,13 @@ export default function ContactPage() {
                   <span>
                     <span className="k">LinkedIn</span>
                     <span className="v">View profile</span>
+                  </span>
+                </a>
+                <a className="method qr" href={site.hihello} target="_blank" rel="noopener noreferrer">
+                  <Image src="/hihello-qr.png" alt="QR code for Doug Cox's HiHello digital business card" width={600} height={600} sizes="112px" />
+                  <span>
+                    <span className="k">Digital business card</span>
+                    <span className="v">Scan to save Doug&rsquo;s contact</span>
                   </span>
                 </a>
               </div>

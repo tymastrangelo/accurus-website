@@ -75,9 +75,9 @@ export default function WorkshopPage() {
             uid="workshop"
             reveal
             photoSrc="/doug-cox-workshop-slide.jpg"
-            photoAlt="Douglas Cox introducing the Practical Survey Design for Decision Makers workshop"
+            photoAlt="Doug Cox introducing the Practical Survey Design for Decision Makers workshop"
             aspectRatio="4 / 3"
-            caption="Douglas Cox"
+            caption="Doug Cox"
             role="Leading the two-day workshop"
           />
         </div>
@@ -143,7 +143,7 @@ export default function WorkshopPage() {
                 sizes="(max-width: 880px) 90vw, 480px"
               />
             </figure>
-            <ol className="steps reveal">
+            <ol className="steps cycle-colors reveal">
               {cycle.map(([title, q], i) => (
                 <li key={title}>
                   <span className="num">{i + 1}</span>
