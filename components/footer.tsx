@@ -29,6 +29,9 @@ export function Footer() {
           <a href={site.linkedin} target="_blank" rel="noopener noreferrer">
             Connect on LinkedIn
           </a>
+          <a href={site.introVideo} target="_blank" rel="noopener noreferrer">
+            Watch a 30-second intro
+          </a>
         </div>
       </div>
       <div className="foot-bottom">
