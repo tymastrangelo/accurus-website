@@ -15,7 +15,7 @@ export const site = {
   phone: "+13362606451",
   phoneDisplay: "336.260.6451",
   linkedin: "https://linkedin.com/in/douglascox1",
-  introVideo: "https://www.youtube.com/watch?v=aQk4in_YvDQ",
+  introVideo: "/intro.mp4",
   hihello: "https://hihello.com/p/03b0aa2e-fcb9-491d-bd83-cc0f379ede7b",
 } as const;
 
