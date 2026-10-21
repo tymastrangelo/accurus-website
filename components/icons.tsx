@@ -99,6 +99,14 @@ export function LinkedinIcon(props: IconProps) {
   );
 }
 
+export function ChevronDownIcon(props: IconProps) {
+  return (
+    <Base strokeWidth={2} {...props}>
+      <path d="m6 9 6 6 6-6" />
+    </Base>
+  );
+}
+
 export function MenuIcon(props: IconProps) {
   return (
     <Base strokeWidth={2} {...props}>

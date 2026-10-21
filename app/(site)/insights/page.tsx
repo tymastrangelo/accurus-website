@@ -1,27 +1,18 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Eyebrow } from "@/components/eyebrow";
 import { SectionHeading } from "@/components/section-heading";
-import { ServiceCard } from "@/components/service-card";
+import { ArticleList } from "@/components/article-list";
+import { ArrowRightIcon } from "@/components/icons";
 import { FinalCta } from "@/components/final-cta";
+import { aiDisclosure, categories } from "@/lib/articles";
 
 export const metadata: Metadata = {
   title: "Insights",
   description:
-    "Practical thinking about surveys, evidence and better decisions: survey design, sampling, questionnaire development, data quality, analysis and information gaps.",
+    "Practical insights from more than 40 years of survey research experience: understanding the business problem, designing better surveys, recognizing bad data and turning reliable evidence into better decisions.",
   alternates: { canonical: "/insights" },
-  // Hidden until the first articles are ready: out of nav/footer/sitemap and search.
-  robots: { index: false, follow: true },
 };
-
-// ponytail: topics only until the first articles are written; add an article list here then.
-const topics = [
-  ["Survey Design", "Practical guidance for designing research that answers the question you actually need answered."],
-  ["Questionnaire Design", "How seemingly small wording choices can have surprisingly large effects on the information respondents provide."],
-  ["Sampling", "Why who answers a survey matters just as much as how many people answer it."],
-  ["Data Quality", "Understanding the factors that determine whether survey findings deserve to be trusted."],
-  ["Analysis & Interpretation", "Moving beyond charts and averages to understand what the data actually shows—and what it doesn’t."],
-  ["Information Gaps & Decisions", "Recognizing when important information is missing and determining whether survey research can help close the gap."],
-];
 
 export default function InsightsPage() {
   return (
@@ -62,15 +53,54 @@ export default function InsightsPage() {
       <section>
         <div className="wrap">
           <SectionHeading eyebrow="Featured topics" title="What the Insights Collection Covers" reveal>
-            The first articles are being written now and will be published here as they become
-            available.
+            Explore practical insights from more than 40 years of survey research
+            experience&mdash;helping organizations ask better questions, recognize unreliable
+            information, and make better-informed business decisions.
           </SectionHeading>
-          <div className="cards stagger">
-            {topics.map(([title, body]) => (
-              <ServiceCard key={title} title={title}>
-                {body}
-              </ServiceCard>
+          <div className="cards two stagger">
+            {categories.map((c) => {
+              const featured = c.articles[0];
+              return (
+                <article key={c.id} className="card topic-card">
+                  <span className="topbar" aria-hidden="true" />
+                  <h3>{c.title}</h3>
+                  <p>{c.description}</p>
+                  <div className="featured">
+                    <span className="k">Featured article</span>
+                    <Link href={`/insights/${featured.slug}`}>
+                      {featured.title}
+                      <span className="arr" aria-hidden="true">
+                        <ArrowRightIcon size={17} />
+                      </span>
+                    </Link>
+                  </div>
+                </article>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      <hr className="divider" />
+
+      <section>
+        <div className="wrap">
+          <SectionHeading eyebrow="All articles" title="Explore the Articles" reveal />
+          <div className="article-groups">
+            {categories.map((c) => (
+              <div key={c.id} id={c.id} className="feature anchor reveal">
+                <div>
+                  <span className="label">{c.articles.length} articles</span>
+                  <h3>{c.title}</h3>
+                </div>
+                <ArticleList articles={c.articles} />
+              </div>
             ))}
+          </div>
+          {/* every article's "Editorial and AI Disclosure" link lands here */}
+          <div id="ai-disclosure" className="note-card disclosure anchor reveal">
+            <h3>Editorial and AI Disclosure</h3>
+            <p className="fine">{aiDisclosure}</p>
           </div>
         </div>
       </section>

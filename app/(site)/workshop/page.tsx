@@ -9,7 +9,7 @@ import { FinalCta } from "@/components/final-cta";
 export const metadata: Metadata = {
   title: "Two-Day Workshop",
   description:
-    "Practical Survey Design for Decision Makers: a two-day, hands-on workshop that builds internal survey capability through the 7-Step Survey Success Cycle, a continuing case study, and a take-home workbook.",
+    "Survey Research for Better Business Decisions: a two-day, hands-on workshop that builds internal survey capability through the 7-Step Survey Success Cycle, a continuing case study, and a take-home workbook.",
   alternates: { canonical: "/workshop" },
 };
 
@@ -61,7 +61,12 @@ export default function WorkshopPage() {
         <div className="wrap">
           <div className="reveal">
             <Eyebrow>Two-Day Workshop</Eyebrow>
-            <h1>Practical Survey Design for Decision Makers</h1>
+            <h1>
+              Survey Research for Better Business Decisions
+              <span className="h1-sub">
+                A Practical Guide to Designing, Conducting, and Using Surveys
+              </span>
+            </h1>
             <p className="lead">
               <b>From information gap to reliable evidence.</b>
             </p>
@@ -74,8 +79,8 @@ export default function WorkshopPage() {
             variant="hero"
             uid="workshop"
             reveal
-            photoSrc="/doug-cox-workshop-slide.jpg"
-            photoAlt="Doug Cox introducing the Practical Survey Design for Decision Makers workshop"
+            photoSrc="/doug-cox-workshop-title.jpg"
+            photoAlt="Doug Cox introducing the Survey Research for Better Business Decisions workshop"
             aspectRatio="4 / 3"
             caption="Doug Cox"
             role="Leading the two-day workshop"
@@ -111,7 +116,11 @@ export default function WorkshopPage() {
             </div>
             <div className="body">
               <p>
-                <b>Practical Survey Design for Decision Makers</b> is a two-day, hands-on workshop
+                <b>
+                  Survey Research for Better Business Decisions: A Practical Guide to Designing,
+                  Conducting, and Using Surveys
+                </b>{" "}
+                is a two-day, hands-on workshop
                 designed to give participants a practical working knowledge of the survey research
                 process.
               </p>
@@ -207,9 +216,10 @@ export default function WorkshopPage() {
                 arises.
               </p>
               <p>
-                Participants also receive a bonus resource addressing{" "}
-                <b>Online Surveys in Today&rsquo;s World</b> and the opportunities and challenges
-                associated with modern online survey research.
+                Participants also receive a bonus resource titled{" "}
+                <b>Online Surveys: Better Technology Doesn&rsquo;t Always Mean Better Data</b> that
+                addresses the opportunities and challenges associated with modern online survey
+                research.
               </p>
             </div>
           </div>

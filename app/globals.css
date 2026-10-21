@@ -267,14 +267,14 @@ img {
   gap: 1.7rem;
   white-space: nowrap;
 }
-.nav-links a.link {
+.nav-links .link {
   position: relative;
   font-weight: 600;
   color: var(--navy);
   font-size: 0.98rem;
   padding: 0.2rem 0;
 }
-.nav-links a.link::after {
+.nav-links .link::after {
   content: "";
   position: absolute;
   left: 0;
@@ -287,13 +287,69 @@ img {
   transform-origin: left;
   transition: transform 0.3s var(--ease);
 }
-.nav-links a.link:hover::after,
-.nav-links a.link:focus-visible::after,
-.nav-links a.link[aria-current="page"]::after {
+.nav-links .link:hover::after,
+.nav-links .link:focus-visible::after,
+.nav-links .link[aria-current="page"]::after,
+.nav-links .link[data-active]::after {
   transform: scaleX(1);
 }
 .nav-cta {
   margin-left: 0.4rem;
+}
+/* Services menu: the three offerings under one trigger */
+.nav-menu {
+  position: relative;
+}
+.nav-menu button.link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  background: none;
+  border: 0;
+  font-family: inherit;
+  line-height: inherit;
+  cursor: pointer;
+}
+.nav-menu button.link svg {
+  transition: transform 0.25s var(--ease);
+}
+.nav-menu button.link[aria-expanded="true"] svg {
+  transform: rotate(180deg);
+}
+.nav-dropdown {
+  position: absolute;
+  top: calc(100% + 0.9rem);
+  left: -1rem;
+  min-width: 15rem;
+  margin: 0;
+  padding: 0.45rem;
+  list-style: none;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  animation: dropdown-in 0.18s var(--ease);
+}
+.nav-dropdown a {
+  display: block;
+  padding: 0.6rem 0.8rem;
+  border-radius: 10px;
+  font-weight: 600;
+  color: var(--navy);
+  transition: background 0.2s, color 0.2s;
+}
+.nav-dropdown a:hover,
+.nav-dropdown a:focus-visible {
+  background: var(--paper-warm);
+}
+.nav-dropdown a[aria-current="page"] {
+  color: var(--ember-text);
+}
+@keyframes dropdown-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
 }
 .menu-btn {
   display: none;
@@ -1382,6 +1438,185 @@ body:not(.animate) .arc-draw {
   }
 }
 
+/* ------------------------------ insights ------------------------------ */
+.cards.two {
+  grid-template-columns: repeat(2, 1fr);
+}
+/* full workshop title: main line in the h1, subtitle beneath it */
+.h1-sub {
+  display: block;
+  margin-top: 0.8rem;
+  font-size: clamp(1.15rem, 0.95rem + 1vw, 1.7rem);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.3;
+  letter-spacing: -0.005em;
+  color: #41506b;
+}
+/* category card: description, then a ruled-off featured article pinned to the bottom */
+.topic-card > p {
+  margin-bottom: 1.4rem;
+}
+.topic-card .featured {
+  margin-top: auto;
+  padding-top: 1.1rem;
+  border-top: 1px solid var(--line);
+}
+.topic-card .featured .k {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.topic-card .featured a {
+  display: inline-block;
+  margin-top: 0.35rem;
+  font-family: var(--font-display), serif;
+  font-size: 1.15rem;
+  font-weight: 500;
+  line-height: 1.35;
+  color: var(--navy);
+  transition: color 0.2s;
+}
+.topic-card .featured a:hover {
+  color: var(--ember-text);
+}
+.topic-card .featured .arr {
+  display: inline-block;
+  margin-left: 0.35rem;
+  vertical-align: -0.12em;
+  color: var(--ember-text);
+  transition: transform 0.25s var(--ease);
+}
+.topic-card .featured a:hover .arr {
+  transform: translateX(4px);
+}
+.article-groups {
+  margin-top: clamp(2.5rem, 5vw, 3.5rem);
+}
+.feature h3 {
+  font-size: clamp(1.5rem, 1.2rem + 1.1vw, 2rem);
+  margin-top: 0.5rem;
+}
+.article-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 1.7rem;
+}
+.article-list a {
+  font-family: var(--font-display), serif;
+  font-size: 1.28rem;
+  font-weight: 500;
+  line-height: 1.3;
+  color: var(--navy);
+  text-decoration: underline;
+  text-decoration-color: rgba(237, 122, 20, 0.35);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.22em;
+  transition: color 0.2s, text-decoration-color 0.2s;
+}
+.article-list a:hover {
+  color: var(--ember-text);
+  text-decoration-color: currentColor;
+}
+.article-list p {
+  margin-top: 0.45rem;
+}
+.note-card.disclosure {
+  margin-top: clamp(3rem, 6vw, 4.5rem);
+}
+.fine {
+  font-size: 0.93rem;
+  line-height: 1.6;
+  color: var(--muted);
+}
+.fine a {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  transition: color 0.2s;
+}
+.fine a:hover {
+  color: var(--ember-text);
+}
+a.eyebrow:hover {
+  color: var(--ember-text);
+}
+.page-hero h1.article-title {
+  font-size: clamp(2rem, 1.5rem + 2vw, 3.2rem);
+  max-width: 24em;
+}
+.byline {
+  margin-top: 1.1rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+.article-pdf {
+  margin-top: 1.4rem;
+}
+/* article text: one readable column, left-aligned under the hero */
+.article-section {
+  padding-block: clamp(2.5rem, 5vw, 4rem);
+}
+.article-body {
+  max-width: 42rem;
+  font-size: clamp(1.05rem, 1rem + 0.25vw, 1.15rem);
+  line-height: 1.7;
+}
+.article-body > * + * {
+  margin-top: 1.1em;
+}
+.article-body h2 {
+  font-size: clamp(1.55rem, 1.3rem + 1vw, 2rem);
+  line-height: 1.2;
+  margin-top: 2.6rem;
+}
+.article-body h3 {
+  font-size: clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem);
+  line-height: 1.25;
+  margin-top: 2.1rem;
+}
+.article-body h2 + *,
+.article-body h3 + * {
+  margin-top: 0.8em;
+}
+.article-body strong {
+  color: var(--navy);
+}
+.article-body ul,
+.article-body ol {
+  padding-left: 1.4em;
+}
+.article-body li + li {
+  margin-top: 0.4em;
+}
+.article-body li::marker {
+  color: var(--ember-text);
+}
+.table-wrap {
+  overflow-x: auto;
+}
+.article-body table {
+  border-collapse: collapse;
+  font-size: 0.95em;
+}
+.article-body th,
+.article-body td {
+  padding: 0.55em 0.75em;
+  border-bottom: 1px solid var(--line);
+  text-align: right;
+  color: var(--navy);
+}
+.article-body th[scope="row"] {
+  padding-left: 0;
+  text-align: left;
+  font-weight: 600;
+}
+
 /* ---------------------------- responsive ------------------------------ */
 @media (max-width: 1180px) {
   .nav-links {
@@ -1430,7 +1665,8 @@ body:not(.animate) .arc-draw {
   .page-hero.has-portrait .portrait {
     width: min(340px, 100%);
   }
-  .cards {
+  .cards,
+  .cards.two {
     grid-template-columns: 1fr;
     gap: 1rem;
   }
@@ -1462,6 +1698,9 @@ body:not(.animate) .arc-draw {
   .arc-draw {
     transform: none !important;
     animation: none !important;
+  }
+  .nav-dropdown {
+    animation: none;
   }
   .page-transition {
     animation: none !important;
