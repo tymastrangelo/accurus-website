@@ -8,6 +8,9 @@ import { site } from "@/lib/site";
 
 type Props = { params: Promise<{ slug: string }> };
 
+// Doug signs his articles formally; the rest of the site uses site.founder ("Doug Cox").
+const author = "Douglas Cox";
+
 // Every article is prerendered; any other slug is a 404.
 export const dynamicParams = false;
 
@@ -34,7 +37,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: article.summary,
       url,
       locale: "en_US",
-      authors: [site.founder],
+      authors: [author],
       images: [image],
     },
     twitter: {
@@ -63,7 +66,7 @@ export default async function ArticlePage({ params }: Props) {
           <h1 className="article-title">{article.title}</h1>
           <p className="lead">{article.summary}</p>
           <p className="byline">
-            By {site.founder} · {site.name}
+            By {author} · {site.name}
           </p>
           <a className="btn btn-ghost article-pdf" href={`/articles/${article.slug}.pdf`} download>
             Download the PDF
@@ -87,11 +90,11 @@ export default async function ArticlePage({ params }: Props) {
           <div className="feature reveal">
             <div>
               <span className="label">About the author</span>
-              <h2>{site.founder}</h2>
+              <h2>{author}</h2>
             </div>
             <div className="body">
               <p>
-                Doug Cox is President of Accurus Research and has more than 40 years of experience
+                {author} is President of Accurus Research and has more than 40 years of experience
                 in survey research. Today, he helps organizations strengthen their survey research
                 capabilities, close critical information gaps, and turn reliable evidence into
                 better business decisions.
