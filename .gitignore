@@ -47,3 +47,6 @@ next-env.d.ts
 
 # local knowledge graph (graphify)
 /graphify-out/
+
+# keep the env template
+!.env.example

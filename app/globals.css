@@ -1712,3 +1712,140 @@ a.eyebrow:hover {
     transition: none !important;
   }
 }
+
+/* ------------------------ workshop registration ----------------------- */
+.register-hero .wrap {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: start;
+}
+.register-hero h1 {
+  font-size: clamp(1.8rem, 1.3rem + 2vw, 3.1rem);
+}
+.register-hero h1 em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--body);
+}
+.register-hero p {
+  max-width: 38rem;
+  margin-top: 1rem;
+  line-height: 1.6;
+  color: var(--body);
+}
+.event-card {
+  margin: 2.2rem 0 0;
+  padding: 1.6rem 1.8rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+}
+.event-card dt {
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.event-card dt + dd {
+  margin: 0.25rem 0 1.1rem;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.5;
+}
+.event-card dd:last-child {
+  margin-bottom: 0;
+}
+.register-body {
+  padding: clamp(2rem, 4vw, 3.5rem) 0 clamp(3rem, 6vw, 5rem);
+}
+.reg-form {
+  max-width: 40rem;
+  display: grid;
+  gap: 1.6rem;
+}
+.reg-form fieldset {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.9rem;
+}
+.reg-form legend {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  color: var(--navy);
+  margin-bottom: 0.7rem;
+}
+.field {
+  display: grid;
+  gap: 0.35rem;
+}
+.field label {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--ink);
+}
+.field .opt {
+  font-weight: 400;
+  color: var(--muted);
+}
+.field input {
+  font: inherit;
+  padding: 0.8rem 1rem;
+  border: 1px solid #d9d2c6;
+  border-radius: 12px;
+  background: #fff;
+  color: var(--ink);
+}
+.field input:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
+  border-color: var(--blue);
+}
+.field input[aria-invalid="true"] {
+  border-color: var(--ember-text);
+}
+.field .err {
+  font-size: 0.85rem;
+  color: var(--ember-text);
+}
+.reg-note {
+  font-size: 0.92rem;
+  font-style: italic;
+  color: var(--muted);
+}
+.reg-result {
+  max-width: 40rem;
+  padding: 1.6rem 1.8rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper-warm);
+  font-size: 1.12rem;
+  line-height: 1.55;
+  color: var(--ink);
+}
+.reg-result.error {
+  border-color: #f1c7b8;
+  background: #fff6f2;
+}
+.reg-result p + p {
+  margin-top: 1rem;
+}
+.hp {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+@media (max-width: 880px) {
+  .register-hero .wrap {
+    grid-template-columns: 1fr;
+  }
+  .event-card {
+    margin-top: 0.5rem;
+  }
+}
