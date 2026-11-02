@@ -78,8 +78,6 @@ export default async function RegisterPage() {
                 </span>
               ))}
             </dd>
-            <dt>Cost</dt>
-            <dd>Complimentary</dd>
           </dl>
         </div>
       </section>
