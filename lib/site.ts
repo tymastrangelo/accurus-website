@@ -20,6 +20,14 @@ export const site = {
   hihello: "https://hihello.com/p/03b0aa2e-fcb9-491d-bd83-cc0f379ede7b",
 } as const;
 
+/** A page that overrides openGraph drops the root opengraph-image (shallow merge), so it names this again. */
+export const ogImage = {
+  url: "/opengraph-image",
+  width: 1200,
+  height: 630,
+  alt: `${site.name} · ${site.tagline}`,
+};
+
 /** The three offerings. The desktop nav folds them into one Services menu; the footer and mobile menu list them flat. */
 export const services = [
   { href: "/executive-presentation", label: "Executive Presentation" },

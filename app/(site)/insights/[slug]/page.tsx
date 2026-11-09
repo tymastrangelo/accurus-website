@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { ArticleList } from "@/components/article-list";
 import { FinalCta } from "@/components/final-cta";
 import { allArticles, findArticle } from "@/lib/articles";
-import { site } from "@/lib/site";
+import { ogImage as image, site } from "@/lib/site";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -23,8 +23,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!found) return {};
   const { article } = found;
   const url = `/insights/${article.slug}`;
-  // Overriding openGraph drops the root opengraph-image (shallow merge), so name it again.
-  const image = { url: "/opengraph-image", width: 1200, height: 630, alt: `${site.name} · ${site.tagline}` };
   return {
     title: article.title,
     description: article.summary,

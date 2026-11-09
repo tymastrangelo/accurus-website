@@ -5,12 +5,69 @@ import { Eyebrow } from "@/components/eyebrow";
 import { SectionHeading } from "@/components/section-heading";
 import { PortraitFrame } from "@/components/portrait-frame";
 import { FinalCta } from "@/components/final-cta";
+import { ogImage, site } from "@/lib/site";
+
+const title = "Survey Research Training Workshop";
+const description =
+  "Instructor-led survey research training that helps organizations strengthen their internal capabilities. A two-day workshop, in cohort or private formats.";
 
 export const metadata: Metadata = {
-  title: "Two-Day Workshop",
-  description:
-    "Survey Research for Better Business Decisions: a two-day, hands-on workshop that builds internal survey capability through the 7-Step Survey Success Cycle, a continuing case study, and a take-home workbook.",
+  title,
+  description,
   alternates: { canonical: "/workshop" },
+  // Without these, shared links inherit the homepage's og:title and og:url.
+  openGraph: {
+    type: "website",
+    siteName: site.name,
+    title,
+    description,
+    url: "/workshop",
+    locale: "en_US",
+    images: [ogImage],
+  },
+  twitter: { card: "summary_large_image", title, description, images: [ogImage] },
+};
+
+// Doug's copy, verbatim. Also emitted as FAQPage JSON-LD below.
+const faqs = [
+  [
+    "Who should attend this workshop?",
+    "The workshop is designed for business leaders, managers, and organizational professionals who need reliable information to make decisions or who are involved in planning, conducting, or using surveys. Participants may come from businesses, government agencies, nonprofit organizations, and other settings where understanding the needs, experiences, and opinions of people is important.",
+  ],
+  [
+    "Do participants need previous survey research experience?",
+    "No previous survey research experience is required. The workshop begins with the fundamentals and progresses through the seven steps of a successful survey project. Participants who have conducted surveys before will also benefit from strengthening their understanding of sound research practices and learning to recognize common mistakes that can compromise the reliability of survey results.",
+  ],
+  [
+    "What will participants be able to do after completing the workshop?",
+    "Participants will gain the knowledge, practical skills, and confidence to design and lead survey projects, from identifying information needs through analyzing results and using the findings to support decisions. Equally important, they will develop the judgment to recognize potential weaknesses in survey methods and findings, evaluate the reliability of the evidence, and make informed decisions throughout the research process.",
+  ],
+  [
+    "Will I learn how to develop effective survey questions?",
+    "Absolutely. Questionnaire design is an important part of the workshop. Participants learn how to determine what information a survey needs to collect, develop clear and unbiased questions, select appropriate question formats and response options, and organize questions into an effective questionnaire. They also learn why good questionnaire design begins with a clear understanding of the decisions the survey is intended to support.",
+  ],
+  [
+    "Does the workshop cover analyzing survey results and using the findings?",
+    "Yes. The workshop covers the entire survey research process, including data analysis, interpretation, and the use of findings to support decisions. Participants learn how to recognize meaningful patterns and differences, avoid misleading conclusions, and translate survey results into reliable evidence that can guide action.",
+  ],
+  [
+    "Can an organization arrange a private workshop for its employees?",
+    "Yes. Accurus Research offers private organizational workshops in addition to scheduled cohort workshops that bring together participants from different organizations. A private workshop provides an opportunity for employees to learn together, develop a common understanding of sound survey research practices, and strengthen their organization’s internal capabilities.",
+  ],
+  [
+    "Will participants receive a certificate of completion?",
+    "Yes. Participants who complete the two-day workshop receive a certificate of completion documenting 13.5 Professional Development Hours (PDH). Each participant also receives a printed Participant Workbook and Workshop Presentation Guide to support learning during the workshop and provide useful resources afterward.",
+  ],
+] as const;
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map(([q, a]) => ({
+    "@type": "Question",
+    name: q,
+    acceptedAnswer: { "@type": "Answer", text: a },
+  })),
 };
 
 const openers = [
@@ -67,6 +124,12 @@ export default function WorkshopPage() {
                 A Practical Guide to Designing, Conducting, and Using Surveys
               </span>
             </h1>
+            <p className="lead">
+              Accurus Research provides practical, instructor-led survey research training for
+              organizations that want to strengthen their internal capabilities. Through a
+              comprehensive two-day workshop, participants learn how to plan, design, conduct,
+              analyze, and use surveys to produce reliable evidence for better business decisions.
+            </p>
             <p className="lead">
               <b>From information gap to reliable evidence.</b>
             </p>
@@ -202,18 +265,44 @@ export default function WorkshopPage() {
         <div className="wrap">
           <div className="feature reveal">
             <div>
+              <span className="label">Two ways to learn</span>
+              <h2>Workshop Formats</h2>
+            </div>
+            <div className="body">
+              <p>The two-day workshop is offered in two formats:</p>
+              <ul className="qlist plain">
+                <li>
+                  <b>Scheduled Cohort Workshops:</b> Individuals from different organizations
+                  participate together in a collaborative learning environment, sharing experiences
+                  and perspectives while developing practical survey research skills.
+                </li>
+                <li>
+                  <b>Private Organizational Workshops:</b> Organizations may arrange a dedicated
+                  workshop for their own employees, providing an opportunity for teams to develop a
+                  common understanding of reliable survey research practices.
+                </li>
+              </ul>
+              <p>
+                Both formats provide 13.5 Professional Development Hours (PDH), practical
+                exercises, and comprehensive participant materials.
+              </p>
+            </div>
+          </div>
+
+          <div className="feature reveal">
+            <div>
               <span className="label">Take-home materials</span>
               <h2>Participants Leave with More Than Notes</h2>
             </div>
             <div className="body">
+              <h3>Comprehensive Participant Materials</h3>
               <p>
-                Each participant receives a comprehensive workshop workbook designed to remain
-                useful after the workshop ends.
-              </p>
-              <p>
-                The workbook includes key concepts, exercises, planning tools, examples and
-                reference material that participants can return to when an actual survey need
-                arises.
+                Each participant receives two professionally prepared, printed resources: a{" "}
+                <b>Participant Workbook</b> containing exercises, case study materials, worksheets,
+                and an extensive collection of references and resources; and a{" "}
+                <b>Workshop Presentation Guide</b> containing the presentation slides used
+                throughout the two-day program. Together, these complementary publications support
+                active learning during the workshop and provide valuable resources for future use.
               </p>
               <p>
                 Participants also receive a bonus resource titled{" "}
@@ -279,6 +368,31 @@ export default function WorkshopPage() {
             </div>
           </div>
         </div>
+      </section>
+
+      <section>
+        <div className="wrap">
+          <div className="feature reveal">
+            <div>
+              <span className="label">Common questions</span>
+              <h2>Frequently Asked Questions</h2>
+            </div>
+            {/* native <details>: answers stay in the HTML, so search engines and AI crawlers read them */}
+            <div className="body faq">
+              {faqs.map(([q, a]) => (
+                <details key={q}>
+                  <summary>{q}</summary>
+                  <p>{a}</p>
+                </details>
+              ))}
+            </div>
+          </div>
+        </div>
+        <script
+          type="application/ld+json"
+          // static, trusted copy from this file
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        />
       </section>
 
       <FinalCta uid="workshop" heading="Discuss Bringing the Workshop to Your Organization" />

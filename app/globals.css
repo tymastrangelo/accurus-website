@@ -1204,6 +1204,52 @@ ol.qlist li::before {
   border-left: 2px solid var(--gold);
   color: var(--navy);
 }
+/* subhead inside a feature body: smaller than the row's h2 beside it */
+.feature .body h3 {
+  font-size: clamp(1.2rem, 1.1rem + 0.4vw, 1.4rem);
+  margin-top: 0;
+}
+.feature .body h3 + p {
+  margin-top: 0.6rem;
+}
+/* FAQ: native <details>, chevron drawn with borders so screen readers don't read a glyph */
+.faq details {
+  border-bottom: 1px solid var(--line);
+}
+.faq details:first-child {
+  border-top: 1px solid var(--line);
+}
+.faq summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.1rem 0;
+  font-weight: 700;
+  color: var(--navy);
+  cursor: pointer;
+  list-style: none;
+}
+.faq summary::-webkit-details-marker {
+  display: none;
+}
+.faq summary::after {
+  content: "";
+  flex: none;
+  width: 0.55rem;
+  height: 0.55rem;
+  margin-right: 0.3rem;
+  border-right: 2px solid var(--ember-text);
+  border-bottom: 2px solid var(--ember-text);
+  transform: translateY(-25%) rotate(45deg);
+  transition: transform 0.25s var(--ease);
+}
+.faq details[open] summary::after {
+  transform: translateY(25%) rotate(-135deg);
+}
+.feature .faq details p {
+  margin: 0 0 1.3rem;
+}
 .feature .body .qlist {
   margin-bottom: 1rem;
 }
