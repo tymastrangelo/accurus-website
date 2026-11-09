@@ -135,7 +135,8 @@ export default function WorkshopPage() {
             </p>
             <p className="lead lead-follow">
               Most organizations will encounter occasions when they need to know more than they
-              currently know.
+              currently know. The challenge is determining what information is missing and how to
+              obtain reliable answers that can guide sound business decisions.
             </p>
           </div>
           <PortraitFrame
